@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://db85i58yrpww8"]
+[gd_scene load_steps=61 format=3 uid="uid://db85i58yrpww8"]
 
 [ext_resource type="Texture2D" uid="uid://d0df8mo1fjr6d" path="res://images/ForgottenPlains_Assets/Tileset/Minifantasy_ForgottenPlainsTiles.png" id="1_ea8h7"]
 [ext_resource type="Texture2D" uid="uid://dw231y7kj3f54" path="res://images/ForgottenPlains_Assets/props/Minifantasy_ForgottenPlainsProps.png" id="2_mwmbb"]
@@ -10,10 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dtsk8u603juxr" path="res://images/Creatures_Assets/Base_Humanoids/Orc/Wild Orc/WildOrcIdle.png" id="8_i0lxo"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="9_hnynd"]
 [ext_resource type="FontFile" uid="uid://bk4ibljym34jx" path="res://m3x6.ttf" id="10_s748j"]
-[ext_resource type="Texture2D" uid="uid://bl4fqt3o8pi4b" path="res://images/ForgottenPlains_Assets/Tileset/River/Waterfall/Minifantasy_ForgottenPlainsWaterfallDropLayer.png" id="11_ysmmd"]
-[ext_resource type="Texture2D" uid="uid://busalnrg873g8" path="res://images/ForgottenPlains_Assets/Tileset/River/Waterfall/Minifantasy_ForgottenPlainsWaterfallGroundLayer.png" id="12_tikaq"]
-[ext_resource type="Texture2D" uid="uid://cxvsp34jvh1fa" path="res://images/ForgottenPlains_Assets/Tileset/River/Waterfall/Minifantasy_ForgottenPlainsWaterfallSplashEffectLayer.png" id="13_78b3e"]
-[ext_resource type="Texture2D" uid="uid://2daleina1r85" path="res://images/rr.png" id="14_if577"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ag8oj"]
 texture = ExtResource("1_ea8h7")
@@ -1505,68 +1501,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdfj1"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4i00"]
-texture = ExtResource("11_ysmmd")
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfhav"]
-texture = ExtResource("12_tikaq")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysq4a"]
-texture = ExtResource("13_78b3e")
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_k2ct8"]
-sources/0 = SubResource("TileSetAtlasSource_d4i00")
-sources/1 = SubResource("TileSetAtlasSource_wfhav")
-sources/2 = SubResource("TileSetAtlasSource_ysq4a")
-
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1641,49 +1575,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="brutus/Area2D"]
 position = Vector2(-40, 0)
 shape = SubResource("RectangleShape2D_vdfj1")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 38.0
-offset_top = 12.0
-offset_right = 140.0
-offset_bottom = 52.0
-theme_override_constants/line_separation = -5
-theme_override_fonts/normal_font = ExtResource("10_s748j")
-theme_override_font_sizes/normal_font_size = 16
-text = "What a glorious morning, reminds me of he early days in Kazad-Dun, boy that was a real treat I'll tell you!"
-
-[node name="TileMap4" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_k2ct8")
-format = 2
-
-[node name="Label" type="Label" parent="."]
-offset_left = 237.0
-offset_top = 11.0
-offset_right = 378.0
-offset_bottom = 190.0
-theme_override_constants/line_spacing = -3
-theme_override_fonts/font = ExtResource("10_s748j")
-text = "What a glorious morning, reminds me of he early days in Kazad-Dun, boy that was a real treat I'll tell you!"
-autowrap_mode = 2
-
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="bg" type="NinePatchRect" parent="Control"]
-offset_right = 116.0
-offset_bottom = 97.0
-texture = ExtResource("14_if577")
-
-[node name="msglabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 27.0
-offset_right = 112.0
-offset_bottom = 68.0
 
 [connection signal="timeout" from="brutus/Timer" to="brutus" method="_on_timer_timeout"]
 [connection signal="area_entered" from="brutus/Area2D" to="brutus" method="_on_area_2d_area_entered"]

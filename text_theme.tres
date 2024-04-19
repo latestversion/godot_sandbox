@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://csdx5gm7b7ae1"]
+
+[ext_resource type="FontFile" uid="uid://bk4ibljym34jx" path="res://m3x6.ttf" id="1_cl6re"]
+
+[resource]
+default_font = ExtResource("1_cl6re")
+default_font_size = 16
+Label/constants/line_spacing = 1
