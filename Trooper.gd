@@ -9,35 +9,27 @@ var dir = Vector2(0, 0)
 func _ready():
 	$anim.play("idle")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if shoot_goal:
-		print("I have a shoot goal",shoot_goal)
 		dir = shoot_goal - position
 		var absx = abs(dir.x)
 		var absy = abs(dir.y)
-		if dir.y < 0:
-			if absx > absy:
-				print("1")
-				$anim.play("shoot")
-			if absx < absy:
-				$anim.play("shoot_u")
-				print("2")
-			$anim.flip_h = dir.x > 0
-		else:
-			if absx > absy:
-				$anim.play("shoot")
-				print("3")
-			if absx < absy:
-				$anim.play("shoot_d")
-				print("4")
+		if absx >= absy:
+			$anim.play("shoot")
 			$anim.flip_h = dir.x < 0
+		else:
+			if dir.y < 0:
+				$anim.play("shoot_u")
+				$anim.flip_h = dir.x > 0
+			else:
+				$anim.play("shoot_d")
+				$anim.flip_h = dir.x < 0
 			
 		shoot_goal = null
+		return
 				
 	if goal:
-		print("I have a goal!")
 		if position.distance_squared_to(goal) < 1:
 			print("Arrived at destination!")
 			goal = null
@@ -54,9 +46,11 @@ func _process(delta):
 			$anim.flip_h = dir.x < 0
 	
 func walk_to(pos):
+	print("walk_to")
 	goal = pos
 	
 func shoot_at(pos):
+	print("shoot_at")
 	shoot_goal = pos
 
 func _on_anim_animation_finished():
