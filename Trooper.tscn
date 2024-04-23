@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://c8ytt0vax0n76"]
+[gd_scene load_steps=42 format=3 uid="uid://c8ytt0vax0n76"]
 
 [ext_resource type="Texture2D" uid="uid://cw408o8klrfbi" path="res://images/Scifi_SpaceDerelict_Assets/Creatures/Planetside Troopers/PlanetsideTrooperIdle.png" id="1_f5t0s"]
 [ext_resource type="Script" path="res://Trooper.gd" id="1_pas8t"]
 [ext_resource type="Texture2D" uid="uid://op8jyf1e67aa" path="res://images/Scifi_SpaceDerelict_Assets/Creatures/Planetside Troopers/PlanetsideTrooperWalk.png" id="2_of4w1"]
+[ext_resource type="Texture2D" uid="uid://c8tkwly18je4d" path="res://images/Scifi_SpaceDerelict_Assets/Creatures/Planetside Troopers/PlanetsideTrooperShot.png" id="3_d6udc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e7co"]
 atlas = ExtResource("1_f5t0s")
@@ -67,6 +68,54 @@ region = Rect2(448, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_phahd"]
 atlas = ExtResource("1_f5t0s")
 region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghqxg"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mre3b"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10sua"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2rwf"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3tqt"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vxm5"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx24w"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emvmp"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts6cd"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs66v"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2prv"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqhqd"]
+atlas = ExtResource("3_d6udc")
+region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gex5"]
 atlas = ExtResource("2_of4w1")
@@ -157,6 +206,57 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ghqxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mre3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10sua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2rwf")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3tqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vxm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx24w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emvmp")
+}],
+"loop": false,
+"name": &"shoot_d",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts6cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs66v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2prv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqhqd")
+}],
+"loop": false,
+"name": &"shoot_u",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6gex5")
 }, {
 "duration": 1.0,
@@ -197,4 +297,6 @@ script = ExtResource("1_pas8t")
 position = Vector2(0, -6)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lr72p")
-animation = &"walk"
+animation = &"idle"
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
