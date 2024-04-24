@@ -4,10 +4,12 @@ var SPEED = 30
 var goal = null
 var shoot_goal = null
 var dir = Vector2(0, 0)
+var shootsound = preload("res://sounds/pistol.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$anim.play("idle")
+	$audio.stream = shootsound
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -25,7 +27,8 @@ func _process(delta):
 			else:
 				$anim.play("shoot_d")
 				$anim.flip_h = dir.x < 0
-			
+		
+		$audio.play()
 		shoot_goal = null
 		return
 				
