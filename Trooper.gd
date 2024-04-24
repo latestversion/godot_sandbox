@@ -2,6 +2,7 @@ extends Node2D
 
 var SPEED = 30
 var goal = null
+var path = []
 var shoot_goal = null
 var dir = Vector2(0, 0)
 var shootsound = preload("res://sounds/pistol.wav")
@@ -36,7 +37,9 @@ func _process(delta):
 		if position.distance_squared_to(goal) < 1:
 			print("Arrived at destination!")
 			goal = null
-			$anim.play("idle")
+			goal = path.pop_front()
+			if not goal:
+				$anim.play("idle")
 		else:
 			dir = goal - position
 			position = position + dir.normalized()*SPEED*delta
@@ -45,9 +48,16 @@ func _process(delta):
 				$anim.play("walk_u")
 			else:
 				$anim.play("walk")
-			
 			$anim.flip_h = dir.x < 0
-	
+
+func set_path(points):
+	points.pop_front()
+	path = points
+	print(points)
+	goal = points.front()
+	points.pop_front()
+	print("first gioal in path: ", goal);
+
 func walk_to(pos):
 	print("walk_to")
 	goal = pos

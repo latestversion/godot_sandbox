@@ -955,6 +955,8 @@ position = Vector2(34, 118)
 [node name="a" type="Area2D" parent="zones"]
 collision_layer = 0
 collision_mask = 0
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="zones/a"]
 position = Vector2(167.5, 121)
