@@ -1,5 +1,7 @@
 extends Node2D
 
+var current_pc = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var zones = $zones.get_children()
@@ -16,14 +18,11 @@ func _ready():
 				var crect = ColorRect.new()
 				crect.position = Vector2(startx + col*16, starty + row*16)
 				crect.size = Vector2(14, 14)
-				print(crect.position)
+				#print(crect.position)
 				var color_quantum = int(255/numrows)
-				print(color_quantum)
 				#crect.color = Color(color_quantum*row, color_quantum*row, 0)
-				print("cq",color_quantum*row)
 				#crect.color = Color(1.0, float(row)/numrows, float(col)/numcols, 0.4)
-				crect.color = Color(0, 0, 0, 0.1)
-				print(crect.color)
+				crect.color = Color(0, 0, 0, 0.3)
 				$tiles_views.add_child(crect)
 
 func _input(event):
@@ -36,10 +35,29 @@ func _input(event):
 			
 		if event.pressed:
 			print("pressed")
-			if event.button_index == 1:
-				$T1.shoot_at(event.position)
-			else: 
-				$T1.walk_to(event.position)
+			var pcs = $pcs.get_children()
+			for pc in pcs:
+				var area = pc.find_child("selectarea")
+				if area:
+					print("found child!!")
+					var collshape = area.get_child(0)
+					var pos = collshape.global_position
+					var size = collshape.shape.size
+					print(pos)
+					print(size)
+					var rect: Rect2 = Rect2(Vector2(pos.x-size.x/2, pos.y-size.y/2), size)
+
+					if rect.has_point(event.position):
+						print("omg I selected a pc!")
+						current_pc = pc
+						return
+			
+			
+			if current_pc:
+				if event.button_index == 1: 
+					current_pc.shoot_at(event.position)
+				else: 
+					current_pc.walk_to(event.position)
 		
 		
 	elif event is InputEventMouseMotion:

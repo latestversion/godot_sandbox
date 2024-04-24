@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8ytt0vax0n76"]
+[gd_scene load_steps=43 format=3 uid="uid://c8ytt0vax0n76"]
 
 [ext_resource type="Texture2D" uid="uid://cw408o8klrfbi" path="res://images/Scifi_SpaceDerelict_Assets/Creatures/Planetside Troopers/PlanetsideTrooperIdle.png" id="1_f5t0s"]
 [ext_resource type="Script" path="res://Trooper.gd" id="1_pas8t"]
@@ -290,6 +290,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh4hs"]
+size = Vector2(11, 14)
+
 [node name="Trooper" type="Node2D"]
 script = ExtResource("1_pas8t")
 
@@ -300,5 +303,12 @@ sprite_frames = SubResource("SpriteFrames_lr72p")
 animation = &"idle"
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
+
+[node name="selectarea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="selectarea"]
+position = Vector2(-0.5, -8)
+shape = SubResource("RectangleShape2D_lh4hs")
+disabled = true
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
