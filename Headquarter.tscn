@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxakxqx74fcdl"]
+
+[ext_resource type="Script" path="res://Headquarter.gd" id="1_hiaq1"]
+
+[node name="Headquarter" type="Node2D"]
+script = ExtResource("1_hiaq1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 466.0
+offset_bottom = 305.0
+color = Color(0, 0, 0, 1)
