@@ -7,14 +7,6 @@ var astar = AStar2D.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	var d = {}
-	d[Vector2(1,0)] = "heppo"
-	d[Vector2(0,0)] = "meppo"
-	d[[1,0]] = "fleppo"
-	print(d[Vector2(1,0)])
-	print(d[[1,0]])
-	
 	var zones = $zones.get_children()
 	for zone in zones:
 		var collshape = zone.get_child(0)
@@ -24,7 +16,6 @@ func _ready():
 		var numcols = int(size.x/SIDE)
 		var startx = collshape.global_position.x - size.x/2
 		var starty = collshape.global_position.y - size.y/2
-		print("startx starty ", startx, " ", starty)
 		for row in range(numrows):
 			grid.append([])
 			for col in range(numcols):
@@ -85,7 +76,6 @@ func tile_from_position(pos):
 	var shape = zone.get_child(0)
 	var yoffset = shape.global_position.y - shape.shape.size.y/2
 	var xoffset = shape.global_position.x - shape.shape.size.x/2
-	print("shape global pos", shape.global_position)
 	var col = int((pos.x-xoffset)/Globals.TILE_SIDE)
 	var row = int((pos.y-yoffset)/Globals.TILE_SIDE)
 	return Vector2(col, row)
@@ -101,26 +91,16 @@ func zone_from_global_pos(pos):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		#print("Mouse Click/Unclick at: ", event.position)
-		#print("Mouse Click/Unclick at: ", event.pressed)
-		#print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
-		
 		if event.pressed:
-			print("pressed")
-			
 			var mpos = event.position
-			print("tile", tile_from_position(mpos))
 			
 			var pcs = $pcs.get_children()
 			for pc in pcs:
 				var area = pc.find_child("selectarea")
 				if area:
-					print("found child!!")
 					var collshape = area.get_child(0)
 					var pos = collshape.global_position
 					var size = collshape.shape.size
-					print(pos)
-					print(size)
 					var rect: Rect2 = Rect2(Vector2(pos.x-size.x/2, pos.y-size.y/2), size)
 
 					if rect.has_point(event.position):
@@ -148,7 +128,6 @@ func _input(event):
 						var from_id = from_tile.y*numcols + from_tile.x
 						var to_id = to_tile.y*numcols + to_tile.x
 						var path = astar.get_id_path(from_id, to_id)
-						print(path)
 						
 						var points = []
 						for id in path:
@@ -156,10 +135,8 @@ func _input(event):
 							var col = id%numcols
 							var x = col*Globals.TILE_SIDE + Globals.TILE_SIDE/2
 							var y = 32+row*Globals.TILE_SIDE + Globals.TILE_SIDE/2
-							print(x,y)
 							points.append(Vector2(x,y))
 						
-						print("Setting the following points for walking", points)
 						current_pc.set_path(points)
 					#current_pc.walk_to(event.position)
 					

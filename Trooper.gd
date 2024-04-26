@@ -41,7 +41,6 @@ func _process(delta):
 				
 	if goal:
 		if position.distance_squared_to(goal) < 1:
-			print("Arrived at destination!")
 			position = goal
 			goal = null
 			goal = path.pop_front()
@@ -60,17 +59,12 @@ func _process(delta):
 func set_path(points):
 	points.pop_front()
 	path = points
-	print(points)
-	goal = points.front()
-	points.pop_front()
-	print("first gioal in path: ", goal);
+	goal = points.pop_front()
 
 func walk_to(pos):
-	print("walk_to")
 	goal = pos
 	
 func shoot_at(pos):
-	print("shoot_at")
 	shoot_goal = pos
 
 func _on_anim_animation_finished():
