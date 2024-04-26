@@ -10,10 +10,12 @@ font = ExtResource("1_7xfpj")
 
 [node name="RosterCharacterSquareUi" type="VBoxContainer"]
 theme = ExtResource("1_6otrc")
+theme_override_constants/separation = -2
 script = ExtResource("2_lxl61")
 
 [node name="namelabel" type="Label" parent="."]
 layout_mode = 2
+theme_override_constants/line_spacing = 5
 text = "Name
 "
 label_settings = SubResource("LabelSettings_vd7gc")
