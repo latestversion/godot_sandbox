@@ -297,7 +297,7 @@ size = Vector2(11, 14)
 script = ExtResource("1_pas8t")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, 2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lr72p")
 animation = &"idle"
@@ -305,6 +305,7 @@ animation = &"idle"
 [node name="audio" type="AudioStreamPlayer" parent="."]
 
 [node name="selectarea" type="Area2D" parent="."]
+position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="selectarea"]
 position = Vector2(-0.5, -8)

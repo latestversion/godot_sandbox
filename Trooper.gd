@@ -1,6 +1,6 @@
 extends Node2D
 
-var SPEED = 30
+var SPEED = 50
 var goal = null
 var path = []
 var shoot_goal = null
@@ -11,6 +11,12 @@ var shootsound = preload("res://sounds/pistol.wav")
 func _ready():
 	$anim.play("idle")
 	$audio.stream = shootsound
+	
+func select():
+	$anim.modulate = Color(1,0,1)
+
+func deselect():
+	$anim.modulate = Color(1,1,1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,6 +42,7 @@ func _process(delta):
 	if goal:
 		if position.distance_squared_to(goal) < 1:
 			print("Arrived at destination!")
+			position = goal
 			goal = null
 			goal = path.pop_front()
 			if not goal:

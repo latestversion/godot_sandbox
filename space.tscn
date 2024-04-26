@@ -925,7 +925,7 @@ sources/0 = SubResource("TileSetAtlasSource_kbhvs")
 sources/1 = SubResource("TileSetAtlasSource_4d5iw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jsoj"]
-size = Vector2(335, 176)
+size = Vector2(336, 176)
 
 [node name="Space" type="Node2D"]
 script = ExtResource("1_3lio0")
@@ -940,7 +940,7 @@ layer_0/tile_data = PackedInt32Array(393219, 131073, 30, 393220, 131073, 30, 393
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_fhydf")
 format = 2
-layer_0/tile_data = PackedInt32Array(589827, 327680, 36, 655363, 327680, 37, 720899, 327680, 38, 589828, 393216, 36, 655364, 393216, 37, 720900, 393216, 38, 589829, 458752, 36, 655365, 458752, 37, 720901, 458752, 38, 589832, 327680, 36, 655368, 327680, 37, 720904, 327680, 38, 589833, 393216, 36, 655369, 393216, 37, 720905, 393216, 38, 589834, 458752, 36, 655370, 458752, 37, 720906, 458752, 38, 196612, 655360, 26, 262148, 655360, 27, 327684, 655360, 28, 393220, 655360, 29, 458756, 655360, 30, 131077, 720896, 25, 196613, 720896, 26, 262149, 720896, 27, 327685, 720896, 28, 393221, 720896, 29, 458757, 720896, 30, 524293, 720896, 31, 131078, 786432, 25, 196614, 786432, 26, 327686, 786432, 28, 458758, 786432, 30, 524294, 786432, 31, 131079, 851968, 25, 196615, 851968, 26, 262151, 851968, 27, 327687, 851968, 28, 393223, 851968, 29, 458759, 851968, 30, 524295, 851968, 31, 131080, 917504, 25, 196616, 917504, 26, 327688, 917504, 28, 458760, 917504, 30, 524296, 917504, 31, 131081, 983040, 25, 196617, 983040, 26, 262153, 983040, 27, 327689, 983040, 28, 393225, 983040, 29, 458761, 983040, 30, 524297, 983040, 31, 196618, 1048576, 26, 262154, 1048576, 27, 327690, 1048576, 28, 393226, 1048576, 29, 458762, 1048576, 30, 655375, 262145, 6, 720911, 262145, 7, 589840, 327681, 5, 655376, 327681, 6, 720912, 327681, 7, 589841, 393217, 5, 655377, 393217, 6, 720913, 393217, 7, 655378, 458753, 6, 720914, 458753, 7)
+layer_0/tile_data = PackedInt32Array(589827, 327680, 36, 655363, 327680, 37, 720899, 327680, 38, 589828, 393216, 36, 655364, 393216, 37, 720900, 393216, 38, 589829, 458752, 36, 655365, 458752, 37, 720901, 458752, 38, 589832, 327680, 36, 655368, 327680, 37, 720904, 327680, 38, 589833, 393216, 36, 655369, 393216, 37, 720905, 393216, 38, 589834, 458752, 36, 655370, 458752, 37, 720906, 458752, 38, 196612, 655360, 26, 262148, 655360, 27, 327684, 655360, 28, 393220, 655360, 29, 458756, 655360, 30, 131077, 720896, 25, 196613, 720896, 26, 262149, 720896, 27, 327685, 720896, 28, 393221, 720896, 29, 458757, 720896, 30, 524293, 720896, 31, 131078, 786432, 25, 196614, 1376257, 16, 327686, 1376257, 18, 458758, 786432, 30, 524294, 786432, 31, 131079, 851968, 25, 196615, 1441793, 16, 262151, 1441793, 17, 327687, 1441793, 18, 393223, 851968, 29, 458759, 851968, 30, 524295, 851968, 31, 131080, 917504, 25, 196616, 1507329, 16, 327688, 1507329, 18, 458760, 917504, 30, 524296, 917504, 31, 131081, 983040, 25, 196617, 1572865, 16, 262153, 1572865, 17, 327689, 1572865, 18, 393225, 983040, 29, 458761, 983040, 30, 524297, 983040, 31, 196618, 1048576, 26, 262154, 1048576, 27, 327690, 1048576, 28, 393226, 1048576, 29, 458762, 1048576, 30, 655375, 262145, 6, 720911, 262145, 7, 589840, 327681, 5, 655376, 327681, 6, 720912, 327681, 7, 589841, 393217, 5, 655377, 393217, 6, 720913, 393217, 7, 655378, 458753, 6, 720914, 458753, 7, 327693, 1376257, 9, 458766, 1376257, 9, 262160, 1376257, 9, 393233, 1376257, 9, 393231, 1376257, 9, 655374, 1376257, 9, 589836, 1376257, 9, 720908, 1376257, 9, 458764, 1376257, 9, 262150, 1376257, 17, 262152, 1507329, 17)
 
 [node name="pcs" type="Node2D" parent="."]
 
@@ -959,7 +959,77 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="zones/a"]
+visible = false
 position = Vector2(167.5, 121)
 shape = SubResource("RectangleShape2D_6jsoj")
 
 [node name="tiles_views" type="Node2D" parent="."]
+
+[node name="unwalkables" type="Node2D" parent="."]
+
+[node name="Node2D7" type="Node2D" parent="unwalkables"]
+position = Vector2(247.67, 105.796)
+
+[node name="Node2D2" type="Node2D" parent="unwalkables"]
+position = Vector2(278.94, 170.307)
+scale = Vector2(2, 2)
+
+[node name="Node2D" type="Node2D" parent="unwalkables"]
+position = Vector2(294, 171)
+
+[node name="Node2D3" type="Node2D" parent="unwalkables"]
+position = Vector2(281, 184)
+
+[node name="Node2D4" type="Node2D" parent="unwalkables"]
+position = Vector2(262, 170)
+
+[node name="Node2D6" type="Node2D" parent="unwalkables"]
+position = Vector2(280.142, 105.17)
+
+[node name="Node2D5" type="Node2D" parent="unwalkables"]
+position = Vector2(264.063, 72.9065)
+
+[node name="Node2D8" type="Node2D" parent="unwalkables"]
+position = Vector2(248.087, 104.961)
+
+[node name="Node2D9" type="Node2D" parent="unwalkables"]
+position = Vector2(215.928, 88.7772)
+
+[node name="Node2D10" type="Node2D" parent="unwalkables"]
+position = Vector2(200.162, 122.607)
+
+[node name="Node2D11" type="Node2D" parent="unwalkables"]
+position = Vector2(200.789, 155.288)
+
+[node name="Node2D12" type="Node2D" parent="unwalkables"]
+position = Vector2(232.217, 169.175)
+
+[node name="Node2D13" type="Node2D" parent="unwalkables"]
+position = Vector2(200.162, 185.359)
+
+[node name="Node2D14" type="Node2D" parent="unwalkables"]
+position = Vector2(104.144, 71.8415)
+
+[node name="Node2D15" type="Node2D" parent="unwalkables"]
+position = Vector2(105.711, 89.174)
+
+[node name="Node2D16" type="Node2D" parent="unwalkables"]
+position = Vector2(150.19, 88.8607)
+
+[node name="Node2D17" type="Node2D" parent="unwalkables"]
+position = Vector2(148.206, 70.9018)
+
+[node name="Node2D18" type="Node2D" parent="unwalkables"]
+position = Vector2(135, 70)
+
+[node name="Node2D19" type="Node2D" parent="unwalkables"]
+position = Vector2(136, 89)
+
+[node name="Node2D20" type="Node2D" parent="unwalkables"]
+position = Vector2(120.85, 90.0093)
+
+[node name="Node2D21" type="Node2D" parent="unwalkables"]
+position = Vector2(122.834, 71.0062)
+
+[node name="Node2D22" type="Node2D" parent="unwalkables"]
+position = Vector2(232.092, 120.185)

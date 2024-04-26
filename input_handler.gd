@@ -7,6 +7,14 @@ var astar = AStar2D.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	var d = {}
+	d[Vector2(1,0)] = "heppo"
+	d[Vector2(0,0)] = "meppo"
+	d[[1,0]] = "fleppo"
+	print(d[Vector2(1,0)])
+	print(d[[1,0]])
+	
 	var zones = $zones.get_children()
 	for zone in zones:
 		var collshape = zone.get_child(0)
@@ -35,22 +43,43 @@ func _ready():
 				astar.add_point(count, Vector2(row,col))
 				count += 1
 		
-		for row in range(numrows-1):
-			for col in range(numcols-1):
+		for row in range(numrows):
+			for col in range(numcols):
 				var id = row*numcols + col
 				var rid = id + 1
 				var did = id + numcols
-				if col < numcols:
+				if col < numcols-1:
 					astar.connect_points(id,rid)
-				if row < numrows:
+				if row < numrows-1:
 					astar.connect_points(id,did)
+		
+		var unwalks = $unwalkables.get_children()
+		for u in unwalks:
+			var t = tile_from_position(u.position)
+			var row = t.y
+			var col = t.x
+			grid[row][col].color = Color(1.0,1.0,0,0.1)
+			var id = row*numcols + col
+			var rid = id + 1
+			var lid = id - 1
+			var did = id + numcols
+			var uid = id - numcols
+			if row > 0:
+				astar.disconnect_points(id, uid)
+			if row < numrows-1:
+				astar.disconnect_points(id, did)
+			if col > 0:
+				astar.disconnect_points(id, lid)
+			if col < numcols-1:
+				astar.disconnect_points(id, rid)
 
 func setup_astar():
 	pass
 
-# returns row, col in v2
+# returns col, row in v2
 func tile_from_position(pos):
 	var zone = zone_from_global_pos(pos)
+	
 	if not zone:
 		return null
 	var shape = zone.get_child(0)
@@ -75,7 +104,7 @@ func _input(event):
 		#print("Mouse Click/Unclick at: ", event.position)
 		#print("Mouse Click/Unclick at: ", event.pressed)
 		#print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
-			
+		
 		if event.pressed:
 			print("pressed")
 			
@@ -96,7 +125,10 @@ func _input(event):
 
 					if rect.has_point(event.position):
 						print("omg I selected a pc!")
+						if current_pc:
+							current_pc.deselect()
 						current_pc = pc
+						current_pc.select()
 						var tile_pos = tile_from_position(current_pc.global_position)
 						if tile_pos:
 							pass
@@ -110,7 +142,7 @@ func _input(event):
 					var from_tile = tile_from_position(current_pc.global_position)
 					var to_tile = tile_from_position(event.position)
 					
-					if to_tile and from_tile:
+					if to_tile != null and from_tile != null:
 						#grid[to_tile.y][to_tile.x].color = Color(1.0,0, 1.0, 1.0)
 						var numcols = len(grid[0])
 						var from_id = from_tile.y*numcols + from_tile.x
@@ -123,7 +155,7 @@ func _input(event):
 							var row = int(id/numcols)
 							var col = id%numcols
 							var x = col*Globals.TILE_SIDE + Globals.TILE_SIDE/2
-							var y = 30+row*Globals.TILE_SIDE + Globals.TILE_SIDE
+							var y = 32+row*Globals.TILE_SIDE + Globals.TILE_SIDE/2
 							print(x,y)
 							points.append(Vector2(x,y))
 						
@@ -131,8 +163,6 @@ func _input(event):
 						current_pc.set_path(points)
 					#current_pc.walk_to(event.position)
 					
-					
-		
 	elif event is InputEventMouseMotion:
 		pass
 		
