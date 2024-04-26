@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhcbyjqclv76n"]
+
+[ext_resource type="Theme" uid="uid://csdx5gm7b7ae1" path="res://text_theme.tres" id="1_6otrc"]
+[ext_resource type="FontFile" uid="uid://bk4ibljym34jx" path="res://m3x6.ttf" id="1_7xfpj"]
+[ext_resource type="Texture2D" uid="uid://bx0bljhfkk2r5" path="res://images/PlanetsideTrooperIdleF1SA.png" id="2_5kgh0"]
+[ext_resource type="Script" path="res://RosterCharacterSquareUI.gd" id="2_lxl61"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vd7gc"]
+font = ExtResource("1_7xfpj")
+
+[node name="RosterCharacterSquareUi" type="VBoxContainer"]
+theme = ExtResource("1_6otrc")
+script = ExtResource("2_lxl61")
+
+[node name="namelabel" type="Label" parent="."]
+layout_mode = 2
+text = "Name
+"
+label_settings = SubResource("LabelSettings_vd7gc")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_5kgh0")
+expand_mode = 4

@@ -9,3 +9,15 @@ script = ExtResource("1_hiaq1")
 offset_right = 466.0
 offset_bottom = 305.0
 color = Color(0, 0, 0, 1)
+
+[node name="RosterUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="RosterUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
